@@ -1,6 +1,13 @@
 <?php
 require_once __DIR__ . '/../vendor/autoload.php';
 
+use App\Controllers\EnvController;
+
+// Check if the .env file exists
+$envController = new EnvController();
+$envController->checkEnv();
+
+// If .env exists, continue with your normal bootstrapping:
 use Dotenv\Dotenv;
 use Dotenv\Exception\InvalidPathException;
 
@@ -12,22 +19,14 @@ try {
     echo 'Warning: .env file not found. Continuing without loading environment variables.' . "\n";
 }
 
-// Test print the values with fallback if not set
+// ... Continue with your application (like instantiating GlobalLogger, etc.)
 echo 'APP_ENV: ' . ($_ENV['APP_ENV'] ?? 'not set') . "\n";
 
-// Include GlobalLogger after dotenv has loaded the variables
+// Include GlobalLogger (which decides its own log directory)
 require_once __DIR__ . '/../app/Core/GlobalLogger.php';
 
+$logger = GlobalLogger::getInstance();
 
-$logger = GlobalLogger::getInstance([
-    'logDirectory' => __DIR__ . '/logs',
-    'maxFileSize'  => 10485760,
-    'db' => [
-        'dsn'      => 'mysql:host=localhost;dbname=test_db;charset=utf8',
-        'username' => 'root',
-        'password' => '',
-    ]
-]);
 
 // Test Log Entries
 $logger->log(

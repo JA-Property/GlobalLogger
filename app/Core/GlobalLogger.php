@@ -12,28 +12,26 @@ class GlobalLogger {
     const ERROR    = 'ERROR';
     const CRITICAL = 'CRITICAL';
 
+ // Remove logDirectory (and optionally maxFileSize) from the external config,
+    // so that they can only be controlled via environment variables or hard-coded fallback.
     private function __construct($config = []) {
-        // Get log directory from environment variable, fallback to project root logs folder
-        $envLogDirectory = $_ENV['LOG_DIRECTORY'] ?? __DIR__ . '/../../logs';
-        $this->logDirectory = $config['logDirectory'] ?? $envLogDirectory;
+        // Use only environment variable or fallback (project root logs folder)
+        $this->logDirectory = $_ENV['LOG_DIRECTORY'] ?? __DIR__ . '/../../logs';
         if (!is_dir($this->logDirectory)) {
             mkdir($this->logDirectory, 0755, true);
         }
         
         // Get max file size from environment variable, fallback to 10MB
-        $envMaxFileSize = $_ENV['MAX_LOG_FILE_SIZE'] ?? 10485760;
-        $this->maxFileSize = $config['maxFileSize'] ?? $envMaxFileSize;
+        $this->maxFileSize = $_ENV['MAX_LOG_FILE_SIZE'] ?? 10485760;
         
-        // Get DB configuration from environment if not provided in config array
-        if (isset($config['db']) || (isset($_ENV['DB_DSN']) && $_ENV['DB_DSN'] !== '')) {
-            $dsn      = $config['db']['dsn']      ?? ($_ENV['DB_DSN']      ?? '');
-            $username = $config['db']['username'] ?? ($_ENV['DB_USERNAME'] ?? '');
-            $password = $config['db']['password'] ?? ($_ENV['DB_PASSWORD'] ?? '');
+        // Read DB configuration from environment variables
+        if (isset($_ENV['DB_DSN']) && $_ENV['DB_DSN'] !== '') {
+            $dsn      = $_ENV['DB_DSN'];
+            $username = $_ENV['DB_USERNAME'] ?? '';
+            $password = $_ENV['DB_PASSWORD'] ?? '';
             try {
-                if ($dsn) {
-                    $this->pdo = new PDO($dsn, $username, $password);
-                    $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                }
+                $this->pdo = new PDO($dsn, $username, $password);
+                $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             } catch (PDOException $e) {
                 $this->pdo = null;
             }
@@ -46,7 +44,6 @@ class GlobalLogger {
         }
         return self::$instance;
     }
-    
 
     public function log($level, $module, $message, array $context = [], $source = null, $trace_id = null, $error_details = null, $metadata = []) {
         // Retrieve the APP_ENV environment variable from $_ENV (default to 'production' if not set)
@@ -58,12 +55,11 @@ class GlobalLogger {
             return;
         }
     
-        // Get high-precision timestamp
-        $time = hrtime(true); // Nanoseconds since Unix epoch
-        $seconds = intdiv($time, 1_000_000_000);
-        $nanoseconds = $time % 1_000_000_000;
+        $microtime = microtime(true);
+        $seconds = floor($microtime);
+        $nanoseconds = ($microtime - $seconds) * 1_000_000_000;
         $timestamp = gmdate('Y-m-d\TH:i:s', $seconds) . sprintf('.%09dZ', $nanoseconds);
-    
+        
         // Format context and source as inline key=value pairs for text logging
         $contextString = $this->formatKeyValuePairs($context);
         $sourceString  = $this->formatKeyValuePairs($source);
