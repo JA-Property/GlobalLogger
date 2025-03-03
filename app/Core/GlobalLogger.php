@@ -16,7 +16,7 @@ class GlobalLogger {
     // so that they can only be controlled via environment variables or hard-coded fallback.
     private function __construct($config = []) {
         // Use only environment variable or fallback (project root logs folder)
-        $this->logDirectory = $_ENV['LOG_DIRECTORY'] ?? __DIR__ . '/../../logs';
+        $this->logDirectory = $_ENV['LOG_DIRECTORY'] ?? __DIR__ . 'logs';
         if (!is_dir($this->logDirectory)) {
             mkdir($this->logDirectory, 0755, true);
         }
