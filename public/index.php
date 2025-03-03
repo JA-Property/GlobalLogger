@@ -1,37 +1,23 @@
 <?php
 require_once __DIR__ . '/../vendor/autoload.php';
 
+use Dotenv\Dotenv;
 use Dotenv\Exception\InvalidPathException;
 
 try {
-    // Load environment variables from the root directory (.env file)
-    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
+    // Load environment variables from the project root
+    $dotenv = Dotenv::createImmutable(__DIR__ . '/../');
     $dotenv->load();
 } catch (InvalidPathException $e) {
-    // Gracefully handle the missing .env file
-    echo('Warning: .env file not found. Continuing without loading environment variables.') . "\n";
+    echo 'Warning: .env file not found. Continuing without loading environment variables.' . "\n";
 }
 
 // Test print the values with fallback if not set
 echo 'APP_ENV: ' . ($_ENV['APP_ENV'] ?? 'not set') . "\n";
-echo 'DB_HOST: ' . ($_ENV['DB_HOST'] ?? 'not set') . "\n";
-echo 'DB_USERNAME: ' . ($_ENV['DB_USERNAME'] ?? 'not set') . "\n";
-echo 'DB_PASSWORD: ' . ($_ENV['DB_PASSWORD'] ?? 'not set') . "\n";
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    index
-</body>
-</html>
 
-<?php
-require_once '../app/Core/GlobalLogger.php';
+// Include GlobalLogger after dotenv has loaded the variables
+require_once __DIR__ . '/../app/Core/GlobalLogger.php';
+
 
 $logger = GlobalLogger::getInstance([
     'logDirectory' => __DIR__ . '/logs',

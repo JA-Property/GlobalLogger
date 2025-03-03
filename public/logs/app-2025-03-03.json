@@ -1,0 +1,192 @@
+{
+    "timestamp": "1970-01-07T22:56:58.837028900Z",
+    "level": "WARNING",
+    "module": "SystemModule",
+    "message": "Low disk space warning",
+    "context": {
+        "disk_space": "500MB"
+    },
+    "source": {
+        "file": "C:\\xampp\\htdocs\\public\\index.php",
+        "line": 54
+    },
+    "trace_id": null,
+    "error_details": null,
+    "metadata": []
+}
+{
+    "timestamp": "1970-01-07T22:56:58.840804500Z",
+    "level": "ERROR",
+    "module": "DatabaseModule",
+    "message": "Database connection failed",
+    "context": {
+        "error": "Timeout"
+    },
+    "source": {
+        "file": "C:\\xampp\\htdocs\\public\\index.php",
+        "line": 62
+    },
+    "trace_id": null,
+    "error_details": null,
+    "metadata": []
+}
+{
+    "timestamp": "1970-01-07T22:56:58.842564600Z",
+    "level": "CRITICAL",
+    "module": "SystemModule",
+    "message": "Application crashed due to memory overflow",
+    "context": {
+        "memory": "Out of memory"
+    },
+    "source": {
+        "file": "C:\\xampp\\htdocs\\public\\index.php",
+        "line": 70
+    },
+    "trace_id": null,
+    "error_details": null,
+    "metadata": []
+}
+{
+    "timestamp": "1970-01-07T23:12:10.084034400Z",
+    "level": "WARNING",
+    "module": "SystemModule",
+    "message": "Low disk space warning",
+    "context": {
+        "disk_space": "500MB"
+    },
+    "source": {
+        "file": "C:\\xampp\\htdocs\\public\\index.php",
+        "line": 54
+    },
+    "trace_id": null,
+    "error_details": null,
+    "metadata": []
+}
+{
+    "timestamp": "1970-01-07T23:12:10.136967300Z",
+    "level": "ERROR",
+    "module": "DatabaseModule",
+    "message": "Database connection failed",
+    "context": {
+        "error": "Timeout"
+    },
+    "source": {
+        "file": "C:\\xampp\\htdocs\\public\\index.php",
+        "line": 62
+    },
+    "trace_id": null,
+    "error_details": null,
+    "metadata": []
+}
+{
+    "timestamp": "1970-01-07T23:12:10.140072300Z",
+    "level": "CRITICAL",
+    "module": "SystemModule",
+    "message": "Application crashed due to memory overflow",
+    "context": {
+        "memory": "Out of memory"
+    },
+    "source": {
+        "file": "C:\\xampp\\htdocs\\public\\index.php",
+        "line": 70
+    },
+    "trace_id": null,
+    "error_details": null,
+    "metadata": []
+}
+{
+    "timestamp": "1970-01-07T23:15:09.950466400Z",
+    "level": "WARNING",
+    "module": "SystemModule",
+    "message": "Low disk space warning",
+    "context": {
+        "disk_space": "500MB"
+    },
+    "source": {
+        "file": "C:\\xampp\\htdocs\\public\\index.php",
+        "line": 54
+    },
+    "trace_id": null,
+    "error_details": null,
+    "metadata": []
+}
+{
+    "timestamp": "1970-01-07T23:15:09.953469300Z",
+    "level": "ERROR",
+    "module": "DatabaseModule",
+    "message": "Database connection failed",
+    "context": {
+        "error": "Timeout"
+    },
+    "source": {
+        "file": "C:\\xampp\\htdocs\\public\\index.php",
+        "line": 62
+    },
+    "trace_id": null,
+    "error_details": null,
+    "metadata": []
+}
+{
+    "timestamp": "1970-01-07T23:15:09.955072200Z",
+    "level": "CRITICAL",
+    "module": "SystemModule",
+    "message": "Application crashed due to memory overflow",
+    "context": {
+        "memory": "Out of memory"
+    },
+    "source": {
+        "file": "C:\\xampp\\htdocs\\public\\index.php",
+        "line": 70
+    },
+    "trace_id": null,
+    "error_details": null,
+    "metadata": []
+}
+{
+    "timestamp": "1970-01-07T23:15:24.453023900Z",
+    "level": "WARNING",
+    "module": "SystemModule",
+    "message": "Low disk space warning",
+    "context": {
+        "disk_space": "500MB"
+    },
+    "source": {
+        "file": "C:\\xampp\\htdocs\\public\\index.php",
+        "line": 54
+    },
+    "trace_id": null,
+    "error_details": null,
+    "metadata": []
+}
+{
+    "timestamp": "1970-01-07T23:15:24.455890800Z",
+    "level": "ERROR",
+    "module": "DatabaseModule",
+    "message": "Database connection failed",
+    "context": {
+        "error": "Timeout"
+    },
+    "source": {
+        "file": "C:\\xampp\\htdocs\\public\\index.php",
+        "line": 62
+    },
+    "trace_id": null,
+    "error_details": null,
+    "metadata": []
+}
+{
+    "timestamp": "1970-01-07T23:15:24.457537600Z",
+    "level": "CRITICAL",
+    "module": "SystemModule",
+    "message": "Application crashed due to memory overflow",
+    "context": {
+        "memory": "Out of memory"
+    },
+    "source": {
+        "file": "C:\\xampp\\htdocs\\public\\index.php",
+        "line": 70
+    },
+    "trace_id": null,
+    "error_details": null,
+    "metadata": []
+}
