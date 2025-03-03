@@ -1,10 +1,10 @@
 <?php
 require_once __DIR__ . '/../vendor/autoload.php';
 
-use App\Controllers\EnvController;
+use App\Controllers\SystemControllers\AppSetupController;
 
 // Check if the .env file exists
-$envController = new EnvController();
+$envController = new AppSetupController();
 $envController->checkEnv();
 
 // If .env exists, continue with your normal bootstrapping:
