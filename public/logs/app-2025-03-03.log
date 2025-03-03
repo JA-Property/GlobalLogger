@@ -1,0 +1,3 @@
+1970-01-07T22:40:39.055604800Z | WARNING  | SystemModule | Low disk space warning || disk_space=500MB | file=C:\xampp\htdocs\public\index.php | line=68
+1970-01-07T22:40:39.056251500Z | ERROR    | DatabaseModule | Database connection failed || error=Timeout | file=C:\xampp\htdocs\public\index.php | line=76
+1970-01-07T22:40:39.056625200Z | CRITICAL | SystemModule | Application crashed due to memory overflow || memory=Out of memory | file=C:\xampp\htdocs\public\index.php | line=84
