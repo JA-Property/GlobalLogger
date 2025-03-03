@@ -1,0 +1,22 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # If your site is in a subfolder, adjust the RewriteBase accordingly.
+    RewriteBase /
+
+    # Serve the request directly if the file or directory exists.
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # Otherwise, capture the entire request and pass it as the "route" parameter.
+    RewriteRule ^(.*)$ index.php?route=$1 [QSA,L]
+</IfModule>
+
+# Optionally, set index.php as the default directory index.
+DirectoryIndex index.php
+
+# Prevent direct access to the .env file
+<Files ".env">
+    Require all denied
+</Files>

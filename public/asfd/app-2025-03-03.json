@@ -1,5 +1,5 @@
 {
-    "timestamp": "2025-03-03T02:49:00.782413959Z",
+    "timestamp": "2025-03-03T02:59:37.671365022Z",
     "level": "CRITICAL",
     "module": "SystemModule",
     "message": "Application crashed due to memory overflow",
@@ -8,7 +8,7 @@
     },
     "source": {
         "file": "C:\\xampp\\htdocs\\public\\index.php",
-        "line": 65
+        "line": 62
     },
     "trace_id": null,
     "error_details": null,

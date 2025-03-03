@@ -16,8 +16,6 @@ class AppSetupController {
                 $this->renderEnvForm();
             }
             exit;
-        } else {
-            echo ".env file exists.";
         }
     }
 

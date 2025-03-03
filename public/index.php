@@ -4,6 +4,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 use Dotenv\Dotenv;
 use Dotenv\Exception\InvalidPathException;
 use App\Controllers\SystemControllers\AppSetupController;
+use App\Core\Router;
 
 // Attempt to load environment variables from the project root
 try {
@@ -15,10 +16,6 @@ try {
 
 $envController = new AppSetupController();
 $envController->checkEnv();
-
-// If .env exists, continue with your normal bootstrapping
-echo 'APP_ENV: ' . ($_ENV['APP_ENV'] ?? 'not set') . "\n";
-
 
 // Continue with application bootstrapping (e.g. logger, etc.)
 require_once __DIR__ . '/../app/Core/GlobalLogger.php';
@@ -65,3 +62,22 @@ $logger->log(
     ['file' => __FILE__, 'line' => __LINE__]
 );
 
+// Instantiate the router
+$router = new Router();
+
+// Define your routes
+$router->add('GET', '/', function() {
+    // You might check environment or load your dashboard
+    $envController = new AppSetupController();
+    $envController->checkEnv();
+    echo 'Home Page - APP_ENV: ' . ($_ENV['APP_ENV'] ?? 'not set');
+});
+
+// Add other routes, e.g., for CRM, billing, scheduling
+$router->add('GET', '/crm', function() {
+    // Route to your CRM controller/action
+    echo "CRM Module";
+});
+
+// Dispatch the current request
+$router->dispatch($_SERVER['REQUEST_METHOD'], parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
